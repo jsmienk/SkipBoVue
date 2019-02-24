@@ -2,7 +2,7 @@
     <div class="playing-card" :style="style">
         <div>
             <div class="top-rank">{{ rankString }}</div>
-            <div>{{ rankString }}</div>
+            <div>{{ rankMainString }}</div>
             <div class="bottom-rank">{{ rankString }}</div>
         </div>
     </div>
@@ -40,7 +40,8 @@ export default {
                     color: "#c52b42"
                 }
             ],
-            faceDownColor: "#555"
+            faceDownColor: "#555",
+            jokerRankName: ['skip', '⁤']
         };
     },
     computed: {
@@ -49,8 +50,11 @@ export default {
                 if (c.range.includes(this.rank)) return c;
             }
         },
+        rankMainString() {
+            return this.isFaceUp ? this.rank === 0 ? this.jokerRankName[1] : this.rank : '⁤';
+        },
         rankString() {
-            return this.isFaceUp ? this.rank : '⁤';
+            return this.isFaceUp ? this.rank === 0 ? this.jokerRankName[0] : this.rank : '⁤';
         },
         style() {
             return `
@@ -64,24 +68,29 @@ export default {
 <style lang="scss">
 .playing-card {
     display: inline-block;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
 
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 3em;
+    font-size: 3.5em;
     text-align: center;
+    text-transform: uppercase;
     color: #fff;
 
     // padding: 0 16px 0;
-    width: 90px;
-    height: 140px;
+    width: 110px;
+    height: 170px;
     padding: 4px 8px;
     border-radius: 10px;
-    border: 4px solid #fff;
+    border: 5px solid #fff;
 
     .top-rank,
     .bottom-rank {
-        font-size: 0.4em;
+        font-size: 0.5em;
         text-align: left;
+        text-transform: capitalize;
     }
 
     .top-rank {

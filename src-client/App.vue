@@ -1,27 +1,53 @@
 <template>
     <div id="app">
         <Header>SkipBo</Header>
-        <playing-card :rank="0"/>
-        <playing-card :rank="4"/>
-        <playing-card :rank="8"/>
-        <playing-card :rank="8" :isFaceUp="false"/>
-        <playing-card :rank="10"/>
+        <Hand :cards="cards"/>
         <Footer/>
     </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue"
-import Footer from "./components/Footer.vue"
-import PlayingCard from "./components/PlayingCard.vue"
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import Hand from "./components/Hand.vue";
 
 export default {
     name: "app",
     components: {
-        Header, Footer, PlayingCard
+        Header,
+        Footer,
+        Hand
     },
     data() {
-        return {}
+        return {
+            cards: [
+                {
+                    id: 0,
+                    rank: 12,
+                    isFaceUp: true
+                },
+                {
+                    id: 1,
+                    rank: 3,
+                    isFaceUp: true
+                },
+                {
+                    id: 2,
+                    rank: 8,
+                    isFaceUp: true
+                },
+                {
+                    id: 3,
+                    rank: 9,
+                    isFaceUp: true
+                },
+                {
+                    id: 4,
+                    rank: 0,
+                    isFaceUp: true
+                }
+            ]
+        }
     }
 };
 </script>
@@ -31,9 +57,11 @@ export default {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 16px;
     background-color: #222;
     color: #efefef;
+    font-family: Arial, Helvetica, sans-serif;
 }
 </style>
