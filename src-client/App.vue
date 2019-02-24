@@ -3,6 +3,7 @@
         <Header>SkipBo</Header>
         <Hand :cards="cards"/><br/>
         <Stack :cards="cards"/>
+        <Stack :cards="cards" :isPlayerHand=true :rotate=false />
         <Footer/>
     </div>
 </template>
@@ -47,11 +48,6 @@ export default {
                 {
                     id: 4,
                     rank: 0,
-                    isFaceUp: true
-                },
-                {
-                    id: 5,
-                    rank: 4,
                     isFaceUp: true
                 }
             ]

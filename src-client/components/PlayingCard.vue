@@ -1,6 +1,6 @@
 <template>
     <div class="playing-card" :style="style">
-        <div>
+        <div v-if="isFaceUp">
             <div class="top-rank">{{ rankString }}</div>
             <div>{{ rankMainString }}</div>
             <div class="bottom-rank">{{ rankString }}</div>
@@ -41,7 +41,7 @@ export default {
                 }
             ],
             faceDownColor: "#555",
-            jokerRankName: ['skip', '⁤']
+            jokerRankName: ['skip', 'bo']
         };
     },
     computed: {
@@ -51,10 +51,10 @@ export default {
             }
         },
         rankMainString() {
-            return this.isFaceUp ? this.rank === 0 ? this.jokerRankName[1] : this.rank : '⁤';
+            return this.isFaceUp ? this.rank === 0 ? this.jokerRankName[1] : this.rank : '';
         },
         rankString() {
-            return this.isFaceUp ? this.rank === 0 ? this.jokerRankName[0] : this.rank : '⁤';
+            return this.isFaceUp ? this.rank === 0 ? this.jokerRankName[0] : this.rank : '';
         },
         style() {
             return `
@@ -67,7 +67,6 @@ export default {
 
 <style lang="scss">
 .playing-card {
-    display: inline-block;
     -webkit-user-select: none;  
     -moz-user-select: none;    
     -ms-user-select: none;      
@@ -79,7 +78,7 @@ export default {
     text-transform: uppercase;
     color: #fff;
 
-    // padding: 0 16px 0;
+    position: absolute;
     width: 110px;
     height: 170px;
     padding: 4px 8px;

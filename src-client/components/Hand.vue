@@ -27,27 +27,31 @@ export default {
             type: Boolean,
             default: true
         },
-        overlapType: { // 0, 1, 2, 3, 4 work well
+        overlapType: { // 2, 3, 4, 6 work well
             type: Number,
             default: 3
         },
         rotation: { // 0, 1, 2 work well
             type: Number,
-            default: 2
+            default: 1
         }
     },
     data() {
         return {
-            overlapOffset: 20,
-            rotationOffset: 5
+            overlapOffset: 20
+        }
+    },
+    computed: {
+        rotationOffset() {
+            return this.rotation * 30 / Math.max(this.cards.length, 1)
         }
     },
     methods: {
         getCardStyle(index) {
             return `
-                left: ${-1 * this.overlapType * this.overlapOffset * index}px;
-                top: ${-Math.sin(Math.PI / (this.cards.length - 1) * index) * this.rotation * this.rotationOffset}px;
-                transform: rotate(${(this.cards.length - 1) * this.rotation * this.rotationOffset / -2 + index * this.rotation * this.rotationOffset}deg);
+                left: ${this.overlapType * this.overlapOffset * (index + .5)}px;
+                top: ${20 - Math.sin(Math.PI * index / (Math.max(this.cards.length - 1, 1))) * 15 * this.rotation}px;
+                transform: rotate(${(this.cards.length - 1) * this.rotationOffset * -.5 + index * this.rotationOffset}deg);
             `;
         }
     }
@@ -57,15 +61,15 @@ export default {
 <style lang="scss">
 .card-hand {
     margin-top: 20px;
-    padding: 6px;
+    padding: 16px;
     border-radius: 10px;
-    height: 154px;
+    height: 200px;
+    position: relative;
 
     .playing-card {
-        position: relative;
+        top: 0;
 
         &.is-player-hand {
-            top: 0;
             transition: top 100ms ease;
 
             &:hover {

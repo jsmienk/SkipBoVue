@@ -1,5 +1,5 @@
 <template>
-    <div class="card-hand" @click="go">
+    <div class="card-stack" @click="go">
         <playing-card
             v-for="(card, i) in cards"
             :key="card.id"
@@ -52,8 +52,6 @@ export default {
         },
         getCardStyle(index) {
             return `
-                left: ${-1 * this.overlapOffset * index}px;
-                // top: ${-Math.sin(Math.PI / (this.cards.length - 1) * index) * this.rotation * this.rotationOffset}px;
                 transform: rotate(${this.rotate ? this.rotationOffset[index * 2 % this.rotationOffset.length] : 0}deg);
             `;
         }
@@ -64,16 +62,15 @@ export default {
 <style lang="scss">
 .card-stack {
     margin: 16px;
-    padding: 6px;
+    padding: 16px;
     border-radius: 10px;
-    height: 154px;
-    overflow: scroll;
+    height: 200px;
+    position: relative;
 
     .playing-card {
-        position: relative;
+        top: 0;
 
         &.is-player-hand-and-last {
-            top: 0;
             transition: top 100ms ease;
 
             &:hover {
