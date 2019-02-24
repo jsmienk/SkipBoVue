@@ -56,21 +56,22 @@ export default {
 
 <style lang="scss">
 .card-hand {
+    margin-top: 20px;
     padding: 6px;
     border-radius: 10px;
     height: 154px;
 
     .playing-card {
         position: relative;
-    }
 
-    .is-player-hand.playing-card {
-        top: 0;
-        transition: top 100ms ease;
-    }
+        &.is-player-hand {
+            top: 0;
+            transition: top 100ms ease;
 
-    .is-player-hand:hover {
-        top: -20px !important;
+            &:hover {
+                top: -20px !important;
+            }
+        }
     }
 }
 </style>

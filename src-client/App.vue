@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <Header>SkipBo</Header>
-        <Hand :cards="cards"/>
+        <Hand :cards="cards"/><br/>
+        <Stack :cards="cards"/>
         <Footer/>
     </div>
 </template>
@@ -10,13 +11,15 @@
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Hand from "./components/Hand.vue";
+import Stack from "./components/Stack.vue";
 
 export default {
     name: "app",
     components: {
         Header,
         Footer,
-        Hand
+        Hand,
+        Stack
     },
     data() {
         return {
@@ -44,6 +47,11 @@ export default {
                 {
                     id: 4,
                     rank: 0,
+                    isFaceUp: true
+                },
+                {
+                    id: 5,
+                    rank: 4,
                     isFaceUp: true
                 }
             ]
