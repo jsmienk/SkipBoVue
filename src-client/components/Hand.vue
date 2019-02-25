@@ -48,10 +48,11 @@ export default {
     },
     methods: {
         getCardStyle(index) {
+            const numberOfCards = this.cards.length - 1
             return `
                 left: ${this.overlapType * this.overlapOffset * (index + .5)}px;
-                top: ${20 - Math.sin(Math.PI * index / (Math.max(this.cards.length - 1, 1))) * 15 * this.rotation}px;
-                transform: rotate(${(this.cards.length - 1) * this.rotationOffset * -.5 + index * this.rotationOffset}deg);
+                top: ${25 - Math.sin(Math.PI * index / (Math.max(numberOfCards, 1))) * numberOfCards * 3 * this.rotation}px;
+                transform: rotate(${(numberOfCards) * this.rotationOffset * -.5 + index * this.rotationOffset}deg);
             `;
         }
     }

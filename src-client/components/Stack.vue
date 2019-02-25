@@ -34,7 +34,6 @@ export default {
     },
     data() {
         return {
-            overlapOffset: 110,
             rotationOffset: [-10, -5, 0, 5, 10]
         }
     },
