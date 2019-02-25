@@ -21,7 +21,7 @@ export default {
     props: {
         cards: {
             type: Array,
-            default: []
+            default: function() { return [] }
         },
         isPlayerHand: {
             type: Boolean,
@@ -59,21 +59,25 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./../style/vars.scss";
+
 .card-stack {
-    margin: 16px;
-    padding: 16px;
-    border-radius: 10px;
-    height: 200px;
+    margin: $m-normal;
+    border-radius: $card-radius;
+    width: $card-width;
+    height: $stack-height;
     position: relative;
+    display: inline-block;
+    border: $card-placeholder-border;
 
     .playing-card {
         top: 0;
 
         &.is-player-hand-and-last {
-            transition: top 100ms ease;
+            transition: $card-hover-transition;
 
             &:hover {
-                top: -20px;
+                top: $card-hover-top;
             }
         }
     }

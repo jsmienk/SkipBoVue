@@ -60,9 +60,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./../style/vars.scss";
+
 .card-hand {
-    margin-top: 20px;
-    padding: 16px;
     border-radius: 10px;
     height: 200px;
     position: relative;
@@ -74,7 +74,7 @@ export default {
             transition: top 100ms ease;
 
             &:hover {
-                top: -20px !important;
+                top: $card-hover-top !important;
             }
         }
     }

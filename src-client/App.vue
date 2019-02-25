@@ -2,9 +2,7 @@
   <div id="app">
     <Header>SkipBo</Header>
     <Hand :cards="cards"/>
-    <Stack :cards="cards"/>
-    <Stack :cards="cards" :isPlayerHand="true" :rotate="false"/>
-    <Stock :cards="cards" :isPlayerHand="false"/>
+    <PlayerArea/>
     <Footer/>
   </div>
 </template>
@@ -13,8 +11,7 @@
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Hand from "./components/Hand.vue";
-import Stack from "./components/Stack.vue";
-import Stock from "./components/Stock.vue";
+import PlayerArea from "./components/PlayerArea.vue";
 
 export default {
   name: "app",
@@ -22,8 +19,7 @@ export default {
     Header,
     Footer,
     Hand,
-    Stack,
-    Stock
+    PlayerArea
   },
   data() {
     return {
@@ -75,15 +71,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./style/vars.scss";
+
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 16px;
-  background-color: #222;
-  color: #efefef;
+  padding: $m-normal;
+  background-color: $black;
+  color: $white;
   font-family: Arial, Helvetica, sans-serif;
 }
 </style>

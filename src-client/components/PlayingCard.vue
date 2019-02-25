@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./../style/vars.scss";
+
 .playing-card {
     -webkit-user-select: none;  
     -moz-user-select: none;    
@@ -79,10 +81,10 @@ export default {
     color: #fff;
 
     position: absolute;
-    width: 110px;
-    height: 170px;
+    width: $card-width;
+    height: $card-height;
     padding: 4px 8px;
-    border-radius: 10px;
+    border-radius: $card-radius;
     border: 5px solid #fff;
 
     .top-rank,
@@ -93,12 +95,12 @@ export default {
     }
 
     .top-rank {
-        margin-bottom: 12px;
+        margin-bottom: $card-rank-margin;
     }
 
     .bottom-rank {
         transform: rotate(180deg);
-        margin-top: 12px;
+        margin-top: $card-rank-margin;
     }
 }
 </style>

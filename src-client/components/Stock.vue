@@ -6,6 +6,7 @@
             :rank="card.rank"
             :isFaceUp="card.isFaceUp"
             :style="getCardStyle(i)"
+            :class="{'no-focus': cards.length > numberOfCardsFocus && i < cards.length - numberOfCardsFocus}"
         />
     </div>
 </template>
@@ -20,7 +21,7 @@ export default {
     props: {
         cards: {
             type: Array,
-            default: []
+            default: function() { return [] }
         },
         isPlayerHand: {
             type: Boolean,
@@ -60,19 +61,23 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./../style/vars.scss";
+
 .card-stock {
-    margin: 16px;
-    padding: 16px;
-    border-radius: 10px;
-    height: 260px;
+    margin: $m-normal;
+    border-radius: $card-radius;
+    width: $card-width;
+    height: $stock-height;
+    display: inline-block;
     position: relative;
+    border: $card-placeholder-border;
 
     .playing-card {
         left: 0;
-        transition: left 100ms ease;
+        transition: $card-hover-transition;
 
-        &:hover {
-            left: -34px;
+        &.no-focus:hover {
+            left: $card-hover-left;
         }
     }
 }
