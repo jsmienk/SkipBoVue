@@ -5,11 +5,16 @@ $color-card-border: #fff;
 $color-card-selected-border: yellow;
 $color-card-selected-glow: 0px 0px 16px 1px;
 
+// Effects
 $card-placeholder-border: 1px solid #ffffff44;
+$card-hover-transition: left 100ms ease, top 100ms ease;
 
+// General margins
+$m-tiny: 4px;
 $m-small: 8px;
 $m-normal: 16px;
 
+// Sizes
 $card-rank-margin: 12px;
 $card-font-size: 3.5em;
 $card-mark-font-size: .5em;
@@ -21,7 +26,6 @@ $card-border: 5px solid;
 $card-hover-left: -42px;
 
 $card-hover-top: -20px;
-$card-hover-transition: left 100ms ease, top 100ms ease;
 
 $card-small-rank-margin: 8px;
 $card-small-font-size: 1.6em;
@@ -37,4 +41,3 @@ $hand-height: $card-height * 1.2;
 $hand-small-height: $card-small-height * 1.4;
 
 $stock-margin-bottom: $card-height * .6;
-$stock-small-margin-bottom: $card-small-height * .0;

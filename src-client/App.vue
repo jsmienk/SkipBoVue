@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header>SkipBo</Header>
-    <PlayerArea :isPlayersArea="false"/>
-    <TowerArea />
+    <OpponentsArea/>
+    <TowerArea/>
     <PlayerArea/>
     <Footer/>
   </div>
@@ -10,19 +10,19 @@
 
 <script>
 import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
-import Hand from "./components/Hand.vue";
-import PlayerArea from "./components/PlayerArea.vue";
+import OpponentsArea from "./components/OpponentsArea.vue";
 import TowerArea from "./components/TowerArea.vue";
+import PlayerArea from "./components/PlayerArea.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
     Header,
-    Footer,
-    Hand,
+    OpponentsArea,
+    TowerArea,
     PlayerArea,
-    TowerArea
+    Footer
   },
   data() {
     return {

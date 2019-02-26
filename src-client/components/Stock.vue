@@ -84,7 +84,8 @@ export default {
   border: $card-placeholder-border;
 
   &.small {
-    margin-bottom: $stock-small-margin-bottom;
+    margin-top: $m-tiny;
+    margin-bottom: 0;
     width: $card-small-width;
     height: $card-small-height;
     border-radius: $card-small-radius;

@@ -88,6 +88,7 @@ function shuffle(a) {
   border: $card-placeholder-border;
 
   &.small {
+    margin: $m-tiny;
     width: $card-small-width;
     height: $card-small-height;
     border-radius: $card-small-radius;

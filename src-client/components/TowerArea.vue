@@ -84,7 +84,7 @@ export default {
 
 .tower-area {
   width: 760px;
-  margin: 0 auto;
+  margin: 32px auto 16px;
 
   .tower {
     margin-right: 10px;
