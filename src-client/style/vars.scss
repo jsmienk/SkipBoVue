@@ -1,6 +1,8 @@
 // Colors
 $black: #222;
 $white: #efefef;
+$color-card-border: #fff;
+$color-card-selected-border: yellow;
 
 $card-placeholder-border: 1px solid #ffffff44;
 
@@ -8,13 +10,15 @@ $m-small: 8px;
 $m-normal: 16px;
 
 $card-rank-margin: 12px;
-
 $card-width: 110px;
 $card-height: 170px;
 $card-radius: 10px;
+$card-border: 5px solid;
 $card-hover-top: -20px;
 $card-hover-left: -42px;
 $card-hover-transition: left 100ms ease, top 100ms ease;
+
+$hand-height: $card-height * 1.2;
 
 $stack-height: $card-height;
 $stock-height: $card-height;

@@ -6,7 +6,10 @@
             :rank="card.rank"
             :isFaceUp="card.isFaceUp"
             :style="getCardStyle(i)"
-            :class="{'no-focus': cards.length > numberOfCardsFocus && i < cards.length - numberOfCardsFocus}"
+            :class="{
+                'no-focus': cards.length > numberOfCardsFocus && i < cards.length - numberOfCardsFocus,
+                'selectable': i == cards.length - 1 && isPlayerHand
+            }"
         />
     </div>
 </template>
@@ -65,6 +68,7 @@ export default {
 
 .card-stock {
     margin: $m-normal;
+    margin-bottom: $stock-height;
     border-radius: $card-radius;
     width: $card-width;
     height: $stock-height;

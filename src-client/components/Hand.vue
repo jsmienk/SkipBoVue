@@ -5,7 +5,7 @@
             :key="card.id"
             :rank="card.rank"
             :isFaceUp="card.isFaceUp"
-            :class="{'is-player-hand': isPlayerHand}"
+            :class="{'selectable': isPlayerHand}"
             :style="getCardStyle(i)"
         />
     </div>
@@ -64,13 +64,13 @@ export default {
 
 .card-hand {
     border-radius: 10px;
-    height: 200px;
+    height: $hand-height;
     position: relative;
 
     .playing-card {
         top: 0;
 
-        &.is-player-hand {
+        &.selectable {
             transition: top 100ms ease;
 
             &:hover {

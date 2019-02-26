@@ -4,9 +4,15 @@
             v-for="(stock, i) in this.stocks"
             :key="i"
             :cards="stock"
+            :isPlayerHand="isPlayersArea"
             class="player-area-stock"
         />
-        <Stack :cards="stack" :rotate=false :isPlayerHand="isPlayersArea" class="player-area-stack"/>
+        <Stack 
+            :cards="stack" 
+            :rotate=false 
+            :isPlayerHand="isPlayersArea" 
+            class="player-area-stack"
+        />
     </div>
 </template>
 

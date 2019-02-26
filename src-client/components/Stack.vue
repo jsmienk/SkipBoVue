@@ -5,7 +5,7 @@
             :key="card.id"
             :rank="card.rank"
             :isFaceUp="card.isFaceUp"
-            :class="{'is-player-hand-and-last': isPlayerHand && i == cards.length - 1}"
+            :class="{'selectable': isPlayerHand && i == cards.length - 1}"
             :style="getCardStyle(i)"
         />
     </div>
@@ -73,7 +73,7 @@ export default {
     .playing-card {
         top: 0;
 
-        &.is-player-hand-and-last {
+        &.selectable {
             transition: $card-hover-transition;
 
             &:hover {

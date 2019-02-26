@@ -78,14 +78,22 @@ export default {
     font-size: 3.5em;
     text-align: center;
     text-transform: uppercase;
-    color: #fff;
+    color: $color-card-border;
 
     position: absolute;
     width: $card-width;
     height: $card-height;
     padding: 4px 8px;
     border-radius: $card-radius;
-    border: 5px solid #fff;
+    border: $card-border $color-card-border;
+
+    &.selectable {
+
+        &:hover {
+            border: $card-border $color-card-selected-border;
+            box-shadow: 0px 0px 16px 1px rgba(255,255,0,1);
+        }
+    }
 
     .top-rank,
     .bottom-rank {
