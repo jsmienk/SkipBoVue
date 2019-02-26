@@ -1,11 +1,12 @@
 <template>
-    <div class="card-hand">
+    <div class="card-hand" :class="{'is-enemy': !isPlayersHand}">
         <playing-card
             v-for="(card, i) in cards"
             :key="card.id"
             :rank="card.rank"
-            :isFaceUp="card.isFaceUp"
-            :class="{'selectable': isPlayerHand}"
+            :isFaceUp="isPlayersHand"
+            :isSmall="!isPlayersHand"
+            :class="{selectable: isPlayersHand}"
             :style="getCardStyle(i)"
         />
     </div>
@@ -23,17 +24,13 @@ export default {
             type: Array,
             default: []
         },
-        isPlayerHand: {
+        isPlayersHand: {
             type: Boolean,
             default: true
         },
-        overlapType: { // 2, 3, 4, 6 work well
-            type: Number,
-            default: 3
-        },
-        rotation: { // 0, 1, 2 work well
-            type: Number,
-            default: 1
+        rotation: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
@@ -43,16 +40,27 @@ export default {
     },
     computed: {
         rotationOffset() {
-            return this.rotation * 30 / Math.max(this.cards.length, 1)
+            return this.rotation * 30 / Math.max(this.cards.length, 1);
+        },
+        overlapType() {
+            return this.isPlayersHand ? 3 : 1;
         }
     },
     methods: {
         getCardStyle(index) {
-            const numberOfCards = this.cards.length - 1
+            const lastIndex = this.cards.length - 1;
+            // Card offset from the left side
+            const upsideDownCompensation = this.isPlayersHand ? 0 : (lastIndex + 4) * this.overlapOffset;
+            const leftOffset = this.overlapType * this.overlapOffset * (index + .5);
+            // Card offset from the top follows a wave pattern
+            const top = 25 - Math.sin(Math.PI * index / (Math.max(lastIndex, 1))) * lastIndex * 3 * this.rotation;
+            // Rotation from left to right
+            const rot = (lastIndex) * this.rotationOffset * -.5 + index * this.rotationOffset;
+
             return `
-                left: ${this.overlapType * this.overlapOffset * (index + .5)}px;
-                top: ${25 - Math.sin(Math.PI * index / (Math.max(numberOfCards, 1))) * numberOfCards * 3 * this.rotation}px;
-                transform: rotate(${(numberOfCards) * this.rotationOffset * -.5 + index * this.rotationOffset}deg);
+                left: ${leftOffset - upsideDownCompensation}px;
+                top: ${top}px;
+                transform: rotate(${rot}deg);
             `;
         }
     }
@@ -66,6 +74,12 @@ export default {
     border-radius: 10px;
     height: $hand-height;
     position: relative;
+    display: inline-block;
+
+    &.is-enemy {
+        height: $hand-small-height;
+        transform: rotate(180deg);
+    }
 
     .playing-card {
         top: 0;

@@ -1,85 +1,108 @@
 <template>
-    <div class="card-stack" @click="go">
-        <playing-card
-            v-for="(card, i) in cards"
-            :key="card.id"
-            :rank="card.rank"
-            :isFaceUp="card.isFaceUp"
-            :class="{'selectable': isPlayerHand && i == cards.length - 1}"
-            :style="getCardStyle(i)"
-        />
-    </div>
+  <div class="card-stack" :class="{small: !isPlayersHand && !isTower}">
+    <playing-card
+      v-for="(card, i) in cards"
+      :key="card.id"
+      :rank="card.rank"
+      :isFaceUp="card.isFaceUp"
+      :isSmall="!isPlayersHand && !isTower"
+      :class="{selectable: isPlayersHand && i == cards.length - 1}"
+      :style="getCardStyle(i)"
+    />
+  </div>
 </template>
 
 <script>
 import PlayingCard from "./PlayingCard.vue";
 
 export default {
-    components: {
-        PlayingCard
+  components: {
+    PlayingCard
+  },
+  props: {
+    cards: {
+      type: Array,
+      default: function() {
+        return [];
+      }
     },
-    props: {
-        cards: {
-            type: Array,
-            default: function() { return [] }
-        },
-        isPlayerHand: {
-            type: Boolean,
-            default: false
-        },
-        rotate: {
-            type: Boolean,
-            default: true
-        }
+    isPlayersHand: {
+      type: Boolean,
+      default: false
     },
-    data() {
-        return {
-            rotationOffset: [-10, -5, 0, 5, 10]
-        }
+    isTower: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-        go() {
-            const self = this;
-            setInterval(function() {
-                self.cards.push({
-                    id: self.cards[self.cards.length-1].id + 1,
-                    rank: Math.floor(Math.random() * 12),
-                    isFaceUp: true
-                });
-                console.log(self.cards[self.cards.length-1].rank)
-            }, 1000);
-        },
-        getCardStyle(index) {
-            return `
-                transform: rotate(${this.rotate ? this.rotationOffset[index * 2 % this.rotationOffset.length] : 0}deg);
-            `;
-        }
+    rotate: {
+      type: Boolean,
+      default: true
     }
+  },
+  data() {
+    return {
+      rotationOffset: shuffle([-10, -5, 0, 5, 10])
+    };
+  },
+  methods: {
+    getCardStyle(index) {
+      return `
+                transform: rotate(${
+                  this.rotate
+                    ? this.rotationOffset[
+                        (index * 2) % this.rotationOffset.length
+                      ]
+                    : 0
+                }deg);
+            `;
+    }
+  }
 };
+
+// LOCAL HELPER
+function shuffle(a) {
+  let i = a.length,
+    t,
+    r;
+  while (0 !== i) {
+    r = Math.floor(Math.random() * i);
+    i -= 1;
+    t = a[i];
+    a[i] = a[r];
+    a[r] = t;
+  }
+  return a;
+}
 </script>
 
 <style lang="scss">
 @import "./../style/vars.scss";
 
 .card-stack {
-    margin: $m-normal;
-    border-radius: $card-radius;
-    width: $card-width;
-    height: $stack-height;
-    position: relative;
-    display: inline-block;
-    border: $card-placeholder-border;
+  margin: $m-normal;
+  border-radius: $card-radius;
+  width: $card-width;
+  height: $card-height;
+  position: relative;
+  display: inline-block;
+  border: $card-placeholder-border;
 
-    .playing-card {
-        top: 0;
+  &.small {
+    width: $card-small-width;
+    height: $card-small-height;
+    border-radius: $card-small-radius;
+  }
 
-        &.selectable {
-            transition: $card-hover-transition;
+  .playing-card {
+    top: 0;
 
-            &:hover {
-                top: $card-hover-top;
-            }
-        }
+    &.selectable {
+      transition: $card-hover-transition;
+
+      &:hover {
+        top: $card-hover-top;
+      }
     }
+  }
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <Header>SkipBo</Header>
-    <Hand :cards="cards"/>
+    <PlayerArea :isPlayersArea="false"/>
+    <TowerArea />
     <PlayerArea/>
     <Footer/>
   </div>
@@ -12,6 +13,7 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import Hand from "./components/Hand.vue";
 import PlayerArea from "./components/PlayerArea.vue";
+import TowerArea from "./components/TowerArea.vue";
 
 export default {
   name: "app",
@@ -19,7 +21,8 @@ export default {
     Header,
     Footer,
     Hand,
-    PlayerArea
+    PlayerArea,
+    TowerArea
   },
   data() {
     return {
@@ -48,21 +51,6 @@ export default {
           id: 4,
           rank: 0,
           isFaceUp: true
-        },
-        {
-          id: 5,
-          rank: 9,
-          isFaceUp: true
-        },
-        {
-          id: 6,
-          rank: 6,
-          isFaceUp: true
-        },
-        {
-          id: 7,
-          rank: 2,
-          isFaceUp: true
         }
       ]
     };
@@ -79,7 +67,7 @@ export default {
 
 html,
 body {
-  padding: $m-normal;
+  margin: 0;
   background-color: $black;
   color: $white;
   font-family: Arial, Helvetica, sans-serif;

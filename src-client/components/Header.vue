@@ -15,11 +15,13 @@ export default {
 <style lang="scss">
 #header {
     text-align: left;
+    padding: 16px 32px;
+    background-color: #1a1a1a;
 }
 
 .title {
+    margin: 0;
     font-weight: bold;
     font-size: 2.5em;
-    margin: 6px 0 10px 0;
 }
 </style>

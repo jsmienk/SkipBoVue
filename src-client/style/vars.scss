@@ -3,6 +3,7 @@ $black: #222;
 $white: #efefef;
 $color-card-border: #fff;
 $color-card-selected-border: yellow;
+$color-card-selected-glow: 0px 0px 16px 1px;
 
 $card-placeholder-border: 1px solid #ffffff44;
 
@@ -10,15 +11,30 @@ $m-small: 8px;
 $m-normal: 16px;
 
 $card-rank-margin: 12px;
+$card-font-size: 3.5em;
+$card-mark-font-size: .5em;
 $card-width: 110px;
 $card-height: 170px;
+$card-padding: 4px 8px;
 $card-radius: 10px;
 $card-border: 5px solid;
-$card-hover-top: -20px;
 $card-hover-left: -42px;
+
+$card-hover-top: -20px;
 $card-hover-transition: left 100ms ease, top 100ms ease;
 
-$hand-height: $card-height * 1.2;
+$card-small-rank-margin: 8px;
+$card-small-font-size: 1.6em;
+$card-small-mark-font-size: .6em;
+$card-small-width: 58px;
+$card-small-height: 90px;
+$card-small-padding: 2px 4px;
+$card-small-radius: 6px;
+$card-small-border: 3px solid;
+$card-small-hover-left: -24px;
 
-$stack-height: $card-height;
-$stock-height: $card-height;
+$hand-height: $card-height * 1.2;
+$hand-small-height: $card-small-height * 1.4;
+
+$stock-margin-bottom: $card-height * .6;
+$stock-small-margin-bottom: $card-small-height * .0;
