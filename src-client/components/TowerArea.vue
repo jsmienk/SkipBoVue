@@ -8,7 +8,7 @@
       :isTower="true"
       class="tower"
     />
-    <Stack :cards="stack" :rotate="false" :isTower="true" class="pile"/>
+    <Stack :cards="stack" :rotate="false" :isTower="true" class="deck"/>
   </div>
 </template>
 
@@ -90,7 +90,7 @@ export default {
     margin-right: 10px;
   }
 
-  .pile {
+  .deck {
     margin-left: 80px;
     vertical-align: top;
   }

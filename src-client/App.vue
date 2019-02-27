@@ -1,27 +1,21 @@
 <template>
   <div id="app">
     <Header>SkipBo</Header>
-    <OpponentsArea/>
-    <TowerArea/>
-    <PlayerArea/>
+    <Game/>
     <Footer/>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-import OpponentsArea from "./components/OpponentsArea.vue";
-import TowerArea from "./components/TowerArea.vue";
-import PlayerArea from "./components/PlayerArea.vue";
+import Game from "./components/Game.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
     Header,
-    OpponentsArea,
-    TowerArea,
-    PlayerArea,
+    Game,
     Footer
   },
   data() {
