@@ -17,6 +17,7 @@ export default {
     text-align: left;
     padding: 16px 32px;
     background-color: #1a1a1a;
+    margin-bottom: 8px;
 }
 
 .title {
