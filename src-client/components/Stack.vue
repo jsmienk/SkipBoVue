@@ -1,12 +1,12 @@
 <template>
-  <div class="card-stack" :class="{small: !isPlayersHand && !isTower}">
+  <div class="card-stack" :class="{small: !isUser && !isTower}">
     <playing-card
       v-for="(card, i) in cards"
       :key="card.id"
       :rank="card.rank"
       :isFaceUp="card.isFaceUp"
-      :isSmall="!isPlayersHand && !isTower"
-      :class="{selectable: isPlayersHand && i == cards.length - 1}"
+      :isSmall="!isUser && !isTower"
+      :class="{selectable: isUser && i == cards.length - 1}"
       :style="getCardStyle(i)"
     />
   </div>
@@ -26,7 +26,7 @@ export default {
         return [];
       }
     },
-    isPlayersHand: {
+    isUser: {
       type: Boolean,
       default: false
     },

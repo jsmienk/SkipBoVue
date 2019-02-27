@@ -102,10 +102,9 @@ export default {
   border: $card-border $color-card-border;
 
   &.selectable {
-
     &:hover {
       border: $card-border $color-card-selected-border;
-      box-shadow: $color-card-selected-glow $color-card-selected-border;
+      box-shadow: $color-card-selected-glow;
 
       &.small {
         border: $card-small-border $color-card-selected-border;

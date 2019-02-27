@@ -1,20 +1,20 @@
 <template>
-  <div class="player-area" :class="{'is-enemy': !isPlayersArea}">
+  <div class="player-area" :class="{'is-enemy': !isUser, 'is-turn': isTurn}">
     <h3 class="player-name">{{ player.name }}</h3>
     <Stock
       v-for="(stock, i) in player.stocks"
       :key="i"
       :cards="stock"
-      :isPlayersHand="isPlayersArea"
+      :isUser="isUser"
       class="player-area-stock"
     />
     <Stack
       :cards="player.stack"
       :rotate="false"
-      :isPlayersHand="isPlayersArea"
+      :isUser="isUser"
       class="player-area-stack"
     />
-    <Hand :cards="player.stocks[1]" :isPlayersHand="isPlayersArea" class="player-area-hand"/>
+    <Hand :cards="player.stocks[1]" :isUser="isUser" class="player-area-hand"/>
   </div>
 </template>
 
@@ -36,9 +36,13 @@ export default {
         return DUMMY_PLAYER();
       }
     },
-    isPlayersArea: {
+    isUser: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    isTurn: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -52,56 +56,32 @@ function DUMMY_PLAYER() {
     name: "Player 1",
     stocks: [
       [
-        {
-          id: 0,
-          rank: 2,
-          isFaceUp: true
-        }
+        DUMMY_CARD(),
+        DUMMY_CARD()
       ],
       [
-        {
-          id: 0,
-          rank: 12,
-          isFaceUp: true
-        },
-        {
-          id: 1,
-          rank: 2,
-          isFaceUp: true
-        },
-        {
-          id: 2,
-          rank: 8,
-          isFaceUp: true
-        },
-        {
-          id: 3,
-          rank: 6,
-          isFaceUp: true
-        },
-        {
-          id: 4,
-          rank: 9,
-          isFaceUp: true
-        }
+        DUMMY_CARD(),
+        DUMMY_CARD(),
+        DUMMY_CARD(),
+        DUMMY_CARD()
       ],
       [],
       [
-        {
-          id: 0,
-          rank: 11,
-          isFaceUp: true
-        }
+        DUMMY_CARD()
       ]
     ],
     stack: [
-      {
-        id: 0,
-        rank: 8,
-        isFaceUp: true
-      }
+      DUMMY_CARD()
     ],
     hand: []
+  };
+}
+
+function DUMMY_CARD() {
+  return {
+    id: Math.floor(Math.random() * 1000),
+    rank: Math.floor(Math.random() * 13),
+    isFaceUp: true
   };
 }
 </script>
@@ -112,9 +92,15 @@ function DUMMY_PLAYER() {
 .player-area {
   width: 1100px;
   margin: 0 auto;
+  border-radius: $card-radius;
 
   .player-name {
-    margin: $m-tiny 0 0 18px;
+    margin: 0 18px 0 18px;
+    padding: $m-tiny;
+  }
+
+  &.is-turn .player-name {
+    color: $color-card-selected-border;
   }
 
   .player-area-stock {
@@ -132,13 +118,19 @@ function DUMMY_PLAYER() {
   }
 
   &.is-enemy {
-    width: 360px;
+    padding: $m-tiny $m-tiny 0 $m-tiny;
+    width: 362px;
     display: inline-block;
     transform: rotate(180);
 
+    &.is-turn {
+      border: $player-area-turn-border;
+      box-shadow: $player-area-turn-glow;
+    }
+
     .player-name {
-    margin: $m-tiny 0 0 $m-small;
-  }
+      margin: 0 $m-small 0 $m-small;
+    }
 
     .player-area-stock {
       margin-left: 4px;

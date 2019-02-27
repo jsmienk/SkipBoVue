@@ -2,7 +2,7 @@
     <div id="game">
         <OpponentsArea/>
         <TowerArea/>
-        <PlayerArea/>
+        <PlayerArea :isUser="true"/>
     </div>
 </template>
 

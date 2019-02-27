@@ -2,10 +2,13 @@
 $black: #222;
 $white: #efefef;
 $color-card-border: #fff;
-$color-card-selected-border: yellow;
-$color-card-selected-glow: 0px 0px 16px 1px;
+$color-selection: #ffff0044;
+$color-card-selected-border: #ffff00;
 
 // Effects
+$player-area-turn-glow: 0px 0px 16px 1px $color-selection;
+$player-area-turn-border: 4px solid $color-selection;
+$color-card-selected-glow: 0px 0px 16px 1px $color-card-selected-border;
 $card-placeholder-border: 1px solid #ffffff44;
 $card-hover-transition: left 100ms ease, top 100ms ease;
 

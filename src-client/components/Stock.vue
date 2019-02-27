@@ -1,15 +1,15 @@
 <template>
-  <div class="card-stock" :class="{small: !isPlayersHand}">
+  <div class="card-stock" :class="{small: !isUser}">
     <playing-card
       v-for="(card, i) in cards"
       :key="card.id"
       :rank="card.rank"
       :isFaceUp="card.isFaceUp"
-      :isSmall="!isPlayersHand"
+      :isSmall="!isUser"
       :style="getCardStyle(i)"
       :class="{
                 'no-focus': cards.length > numberOfCardsFocus && i < cards.length - numberOfCardsFocus,
-                'selectable': i == cards.length - 1 && isPlayersHand
+                'selectable': i == cards.length - 1 && isUser
             }"
     />
   </div>
@@ -29,7 +29,7 @@ export default {
         return [];
       }
     },
-    isPlayersHand: {
+    isUser: {
       type: Boolean,
       default: false
     }
@@ -41,7 +41,7 @@ export default {
     };
   },
   computed: {
-      overlapOffset() { return this.isPlayersHand ? 32 : 20; },
+      overlapOffset() { return this.isUser ? 32 : 20; },
   },
   methods: {
     getCardStyle(index) {

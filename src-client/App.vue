@@ -19,37 +19,9 @@ export default {
     Footer
   },
   data() {
-    return {
-      cards: [
-        {
-          id: 0,
-          rank: 12,
-          isFaceUp: true
-        },
-        {
-          id: 1,
-          rank: 3,
-          isFaceUp: true
-        },
-        {
-          id: 2,
-          rank: 8,
-          isFaceUp: true
-        },
-        {
-          id: 3,
-          rank: 9,
-          isFaceUp: true
-        },
-        {
-          id: 4,
-          rank: 0,
-          isFaceUp: true
-        }
-      ]
-    };
+    return {}
   }
-};
+}
 </script>
 
 <style lang="scss">

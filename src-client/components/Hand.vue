@@ -1,12 +1,12 @@
 <template>
-    <div class="card-hand" :class="{'is-enemy': !isPlayersHand}">
+    <div class="card-hand" :class="{'is-enemy': !isUser}">
         <playing-card
             v-for="(card, i) in cards"
             :key="card.id"
             :rank="card.rank"
-            :isFaceUp="isPlayersHand"
-            :isSmall="!isPlayersHand"
-            :class="{selectable: isPlayersHand}"
+            :isFaceUp="isUser"
+            :isSmall="!isUser"
+            :class="{selectable: isUser}"
             :style="getCardStyle(i)"
         />
     </div>
@@ -24,7 +24,7 @@ export default {
             type: Array,
             default: []
         },
-        isPlayersHand: {
+        isUser: {
             type: Boolean,
             default: true
         },
@@ -43,14 +43,14 @@ export default {
             return this.rotation * 30 / Math.max(this.cards.length, 1);
         },
         overlapType() {
-            return this.isPlayersHand ? 3 : 1;
+            return this.isUser ? 3 : 1;
         }
     },
     methods: {
         getCardStyle(index) {
             const lastIndex = this.cards.length - 1;
             // Card offset from the left side
-            const upsideDownCompensation = this.isPlayersHand ? 0 : (lastIndex + 4) * this.overlapOffset;
+            const upsideDownCompensation = this.isUser ? 0 : (lastIndex + 4) * this.overlapOffset;
             const leftOffset = this.overlapType * this.overlapOffset * (index + .5);
             // Card offset from the top follows a wave pattern
             const top = 25 - Math.sin(Math.PI * index / (Math.max(lastIndex, 1))) * lastIndex * 3 * this.rotation;
