@@ -12,12 +12,12 @@
         Player
     ],
     'towers': [
-        [Card],
-        [Card],
-        [Card],
-        [Card]
+        Tower,
+        Tower,
+        Tower,
+        Tower
     ],
-    'deck': [Card]
+    'deck': Deck
 }
 ```
 
@@ -29,13 +29,13 @@ Participant of the game. User or oponnent.
 {
     'name': String,
     'stocks': [
-        [Card],
-        [Card],
-        [Card],
-        [Card]
+        Stock,
+        Stock,
+        Stock,
+        Stock
     ],
-    'stack': [Card],
-    'hand': [Card]
+    'stack': Stack,
+    'hand': Hand
 }
 ```
 
